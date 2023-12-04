@@ -42,9 +42,9 @@ public class animationStateController : MonoBehaviour
             onAnimationStopped();
         }else{
             if(isMobileScreenTouched){
-                onMobile();
+                playOnMobile();
             }else{
-                onEditor();
+                playOnEditor();
             }
         }
     }
@@ -96,58 +96,58 @@ public class animationStateController : MonoBehaviour
             }
     }
 
-    private void onMobile(){
+    private void playOnMobile(){
         if(isMobileScreenTouched){
             if(touch.position.x < Screen.width/2){
                 if(isLevelZeroActivated){
                     onKeyBPressed();
                     exerciseName.text = "Exercise : Curl Biceps";
                     countText.text = "Count : "+(animationStopCount+1).ToString();
-                    infoText.text = "Please do this exercise 3 times";
+                    infoText.text = "Please do this exercise 3 times, tap on left half of mobile screen to begin";
                 }else if(isLevelOneActivated){
                     onKeyAPressed();
                     exerciseName.text = "Exercise : Raise arms";
                     countText.text = "Count : "+(animationStopCount+1).ToString();
-                    infoText.text = "Please do this exercise 3 times";
+                    infoText.text = "Please do this exercise 3 times, tap on left half of mobile screen to begin";
                 }else if(isLevelTwoActivated){
                     onKeyRPressed();
                     exerciseName.text = "Exercise : Rotate arms";
                     countText.text = "Count : "+(animationStopCount+1).ToString();
-                    infoText.text = "Please do this exercise 3 times";
+                    infoText.text = "Please do this exercise 3 times, tap on left half of mobile screen to begin";
                 }
             }else{
                 onKeySPressed();
-                infoText.text = "Tap on left half of mobile screen to begin";
+                infoText.text = "You have stopped the game, please tap on left half of mobile screen to begin";
             }
         }
     }
 
-    private void onEditor(){
+    private void playOnEditor(){
         if(infoText.text == ""){
-            infoText.text = "Press b on editor or tap on left half of mobile screen to curl biceps";
+            infoText.text = "Press b on editor or tap on left half of mobile screen to curl biceps, press s to stop the game at any stage";
         }
         if(Input.GetKey("b") && isLevelZeroActivated){
                 onKeyBPressed();
                 exerciseName.text = "Exercise : Curl Biceps";
                 countText.text = "Count : "+(animationStopCount+1).ToString();
-                infoText.text = "Please do this exercise 3 times";
+                infoText.text = "Please do this exercise 3 times, press b to start and s to stop the game";
             }else if(Input.GetKey("a") && isLevelOneActivated){
                 onKeyAPressed();
                 exerciseName.text = "Exercise : Raise arms";
                 countText.text = "Count : "+(animationStopCount+1).ToString();
-                infoText.text = "Please do this exercise 3 times";
+                infoText.text = "Please do this exercise 3 times, press a to start and s to stop the game";
             }else if(Input.GetKey("r") && isLevelTwoActivated){
                 onKeyRPressed();
                 exerciseName.text = "Exercise : Rotate arms";
                 countText.text = "Count : "+(animationStopCount+1).ToString();
-                infoText.text = "Please do this exercise 3 times";
+                infoText.text = "Please do this exercise 3 times, press r to start and s to stop the game";
             }else if(Input.GetKey("s")){
                 if(isLevelZeroActivated){
-                    infoText.text ="Press b to curl biceps";
+                    infoText.text ="You have stopped the game, press b to curl biceps";
                 }else if(isLevelOneActivated){
-                    infoText.text ="Press a to raise arms";
+                    infoText.text ="You have stopped the game, press a to raise arms";
                 }else if(isLevelTwoActivated){
-                    infoText.text ="Press r to rotate arms";
+                    infoText.text ="You have stopped the game, press r to rotate arms";
                 }
                 onKeySPressed();
             }
